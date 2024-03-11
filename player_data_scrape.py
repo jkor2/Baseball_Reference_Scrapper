@@ -9,16 +9,44 @@ from tkinter import filedialog
 
 class Scrape:
     # Data needs to be a list of tuples 
-    def __init__(self, data):
-        self._data = data
+    def __init__(self):
+        self._data = None
 
+    def convert_data(self):
+        if self._data is None:
+            """
+            Convert data for proper usage
+            """
+            cnvrt = Convert_Excel()
+            cnvrt.open_file()
+            self._data = cnvrt.return_data()
+            print(self._data)
+        else:
+            """
+            Reset and rerun if already populated w data
+            """
+            self.reset_data()
+            self.convert_data()
+    
+    def reset_data(self):
+        """
+        Resest data to None
+        """
+        self._data = None
 
 
 class Convert_Excel:
+    """
+    Converts the excel data into list of tuples 
+    """
     def __init__(self):
         self.data = None
     
     def open_file(self):
+        """
+        Open excel file generated form player_id_and_name 
+        & reformat it 
+        """
         root = tk.Tk()
         root.withdraw()  
         # Ask the user to select an Excel file from their desktop
@@ -34,8 +62,14 @@ class Convert_Excel:
             self.data = temp_list
         except:
             exit()
+    
+    def return_data(self):
+        """
+        Return the data 
+        """
+        return self.data
 
 
 
-xls = Convert_Excel()
-xls.open_file()
+scrape = Scrape()
+scrape.convert_data()
