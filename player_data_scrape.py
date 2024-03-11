@@ -25,13 +25,15 @@ class Convert_Excel:
         file_path = filedialog.askopenfilename(initialdir="/Desktop", title="Select An Excel File", filetypes=(("Excel files", "*.xlsx;*.xls"), ("All files", "*.*")))
         df = pd.read_excel(file_path)
         temp_list = []
-
-        tracker = 0
-        while tracker <= len(df) - 1:
-            # Reformat of excel structure
-            temp_list.append((df["player_ids"][tracker], df['player_name'][tracker]))
-            tracker += 1
-        self.data = temp_list
+        try:
+            tracker = 0
+            while tracker <= len(df) - 1:
+                # Reformat of excel structure
+                temp_list.append((df["player_ids"][tracker], df['player_name'][tracker]))
+                tracker += 1
+            self.data = temp_list
+        except:
+            exit()
 
 
 
