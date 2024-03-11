@@ -52,7 +52,11 @@ class Scrape:
     def format_to_JSON(self):
         """
         Where data will be reformatted to JSON data
+        3 Cases: Fielder, Pitcher, Fielder & Pitcher 
         """
+
+
+
         pass
 
     def add_to_temp_JSON(self):
