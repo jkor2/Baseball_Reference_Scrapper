@@ -6,11 +6,15 @@ import pandas as pd
 import re
 import tkinter as tk
 from tkinter import filedialog
+import json
+
 
 class Scrape:
     # Data needs to be a list of tuples 
     def __init__(self):
         self._data = None
+        self._player_data = None
+        self._JSON_object = {}
 
     def convert_data(self):
         if self._data is None:
@@ -33,6 +37,37 @@ class Scrape:
         Resest data to None
         """
         self._data = None
+
+    def scrape_html(self):
+        """
+        Where http request will be done 
+        1) Reformat excel id and Names
+        2) begin loop -- capture each webpage
+        3) pass response to format_to_JSON 
+        4) pass format_to_JSON result to add_to_temp_JSON
+        5) next iteration
+        """
+        pass
+
+    def format_to_JSON(self):
+        """
+        Where data will be reformatted to JSON data
+        """
+        pass
+
+    def add_to_temp_JSON(self):
+        """
+        Where format_to_JSON result will be sent to be 
+        added to JSON object
+        """
+        pass
+
+    def write_JSON_doc(self):
+        """
+        Dump reformmated JSON data into a JSON files
+        """
+        pass
+
 
 
 class Convert_Excel:
